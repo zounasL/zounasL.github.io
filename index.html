@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Zounas">
 
-    <title>pixeli editori</title>
+    <title>Pixelart</title>
 
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85286000-1"></script>
@@ -190,17 +190,17 @@
         <div class="row">
           <div class="col-lg-5 mr-auto order-lg-2">
             <div class="form-area">  
-				<form role="form">
+				<form role="form" action="https://formspree.io/pixelart.application@gmail.com" method="POST">
 				<br style="clear:both">
 							<h3 style="margin-bottom: 25px; text-align: center;">Lähetä meille palautetta</h3>
 							<div class="form-group">
 								<input type="text" class="form-control" id="email" name="email" placeholder="Sähköposti">
 							</div>
 							<div class="form-group">
-							<textarea class="form-control" type="textarea" id="message" placeholder="Viesti" rows="7"></textarea>
+							<textarea class="form-control" type="textarea" name="message" id="message" placeholder="Viesti" rows="7"></textarea>
 							</div>
 					
-				<button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Lähetä</button>
+				<button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Lähetä</button>
 				</form>
 			</div>
           </div>
@@ -210,15 +210,41 @@
         </div>
 
       </div>
+    </section>
+	
+	<section class="content-section-a">
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-5 mr-auto order-lg-2">
+            <img class="img-fluid" src="img/donate.png" alt="">
+          </div>
+          <div class="col-lg-5 ml-auto order-lg-1">
+			<hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <h2 class="section-heading">Lahjoita</h2>
+            <p class="lead">Auta meitä ylläpitämään ja kehittämään tätä sivua. Voit lahjoittaa meille painamalla donate painiketta.</p>
+            <br>
+            <br>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="donatePaypal">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="8LYACEVZUF32Q">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+          </div>
+        </div>
+
+      </div>
       <!-- /.container -->
 
     </section>
-    <!-- /.content-section-b -->
 
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p class="copyright text-muted small">Copyright &copy; zounas. All Rights Reserved</p>
+        <p class="copyright text-muted small">Copyright &copy; pixelart.fi, All Rights Reserved</p>
       </div>
     </footer>
   </body>
