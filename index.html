@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Zounas">
+
+    <title>pixeli editori</title>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85286000-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+
+      gtag('config', 'UA-85286000-1');
+    </script>
+	
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	
+	  (adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-7386593476829166",
+		enable_page_level_ads: true
+	  });
+	  
+	</script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	
+    <!-- Custom styles for this template -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	
+	
+	<script src="vendor/RgbQuant/rgbquant.js"></script>
+	<script type="text/javascript" src="vendor/pattern-creator/patterCreator-mini-online.js"></script>
+	
+	<script>
+		function colorChnaged() {
+			document.getElementById("gridColor").value = document.getElementById("colorPicker").value;
+		}
+		
+		function colorChnagedInputField() {
+			document.getElementById("colorPicker").value = document.getElementById("gridColor").value;
+		}
+	</script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="intro-header">
+      <div class="container">
+        <div class="intro-message">
+          <h1>Pixeli kuvat</h1>
+          <h3>Ruuduta ja pixelöi kuvasi</h3>
+          <hr class="intro-divider">
+        </div>
+      </div>
+    </header>
+    <!-- Page Content -->
+    <section class="content-section-a">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 ml-auto">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <h2 class="section-heading">Kuvan pixelöinti mini</h2>
+            <p class="lead">Voit ruuduttaa ja pixelöida kuvasi helposti käyttämällä tätä työkalua.</p>
+          </div>
+          <div class="col-lg-5 mr-auto">
+			<div class="card card-margin-top">
+				  <div class="card-header">
+					Kuvan Koko (L x K)
+				  </div>
+				  <div class="card-block">
+					<blockquote class="card-blockquote">
+						<div class="funkyradio">
+						  <div class="funkyradio-success">
+							  <input type="radio" name="radio" id="sizeSmall" />
+							  <label for="sizeSmall">48x64</label>
+						  </div>
+						  <div class="funkyradio-success">
+							  <input type="radio" name="radio" id="sizeMed" checked/>
+							  <label for="sizeMed">96x120</label>
+						  </div>
+						  <div class="funkyradio-success">
+							  <input type="radio" name="radio" id="sizeLarge" />
+							  <label for="sizeLarge">120x160</label>
+						  </div>
+						  <div class="funkyradio-success">
+							  <input type="radio" name="radio" id="sizeCustom" />
+							  <label for="sizeCustom">Muokattu</label>
+						  </div>
+						  <div class="funkyradio-success">
+							<input class="customDimensions" type="number" id="customWidth" name="inputwidth" min="0">
+							<span>x</span>
+							<input class="customDimensions" type="number" id="customHeight" name="inputHeight" min="0">
+						  </div>
+					  </div>
+					</blockquote>
+				  </div>
+				</div>
+            
+			<div class="card card-margin-top">
+				  <div class="card-header">
+					Ruudukon väri
+				  </div>
+				  <div class="card-block">
+					<blockquote class="card-blockquote">
+					  <div class="funkyradio color">
+						<div id="colorPick" class="input-group colorpicker-component">
+						  <input id="gridColor" type="text" value="#00AABB" class="form-control" onchange="colorChnagedInputField();"/>
+						  <span class="input-group-addon"><input type="color" id="colorPicker" value="#00AABB" onchange="colorChnaged();"></span>					  
+						</div>
+					  </div>
+					</blockquote>
+				  </div>
+				</div>
+
+		  
+          <div class="funkyradio color">
+			<label for="addImage" class="btn btn-primary btn-block btn-outlined">Lataa kuva</label>
+            <input type="file" id="addImage" accept="image/*" onchange="handleImageLoader()" style="display: none"/>
+          </div>
+		  
+		  <div class="funkyradio color">
+            <div class="funkyradio-success">
+                  <input type="checkbox" name="settings" id="advanceSettings" data-toggle="collapse" href="#collapse1"/>
+                  <label for="advanceSettings">Lisäasetukset</label>
+			</div>
+			<div id="collapse1" class="panel-collapse collapse">
+				<div class="card">
+				  <div class="card-header">
+					Värien määrä
+				  </div>
+				  <div class="card-block">
+					<blockquote class="card-blockquote">
+						<input class="customDimensions" type="number" id="colorPalet" name="colorPalet" min="0">
+					</blockquote>
+				  </div>
+				</div>
+			</div>
+          </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <section class="content-section-a">
+
+      <div class="container">
+        <div class="row">
+          <h3>Ruudutetut Kuvat</h3>
+        </div>
+          <div class="row">
+		  <table class="table">
+			<thead>
+			  <tr>
+				<th>Kuva</th>
+				<th>Koko</th>
+			  </tr>
+			</thead>
+			<tbody id="createdImage">
+			</tbody>
+		  </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 mr-auto order-lg-2">
+            <div class="form-area">  
+				<form role="form">
+				<br style="clear:both">
+							<h3 style="margin-bottom: 25px; text-align: center;">Lähetä meille palautetta</h3>
+							<div class="form-group">
+								<input type="text" class="form-control" id="email" name="email" placeholder="Sähköposti">
+							</div>
+							<div class="form-group">
+							<textarea class="form-control" type="textarea" id="message" placeholder="Viesti" rows="7"></textarea>
+							</div>
+					
+				<button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Lähetä</button>
+				</form>
+			</div>
+          </div>
+          <div class="col-lg-5 ml-auto order-lg-1">
+            <img class="img-fluid" src="img/dog.png" alt="">
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container -->
+
+    </section>
+    <!-- /.content-section-b -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p class="copyright text-muted small">Copyright &copy; zounas. All Rights Reserved</p>
+      </div>
+    </footer>
+  </body>
+
+<script>
+	document.getElementById("advanceSettings").checked = false;
+</script>
+</html>
