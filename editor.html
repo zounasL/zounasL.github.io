@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Knitting</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" type="text/css" href="./css/application.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/fonts-googleapis-material.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script type="text/javascript" src="./app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <div id="application">
+      <div class="row-fluid">
+        <nav class="navbar navbar-expand">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Tiedosto
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <!--
+                  <button class="dropdown-item"><i class="material-icons">insert_drive_file</i> Uusi kuvio</button>
+                  <button class="dropdown-item" data-toggle="modal" data-target="#myModal" onclick="previewPatternGrid()"><i class="material-icons">image</i> Lisää kuva</button>
+                  <div class="dropdown-divider"></div>
+                  -->
+                  <button class="dropdown-item" onclick="saveCanvas()"><i class="material-icons">save</i> Tallenna</button>
+                  <button class="dropdown-item" onclick="printCanvas()"><i class="material-icons">print</i> Tulosta</button>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Muokkaa
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <button class="dropdown-item" data-toggle="modal" data-target="#resizeCanvas"><i class="material-icons">zoom_out_map</i> Koko</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+			<div class="row-fluid editor-row">
+				<div class="fixed toolbar">
+					<!-- <button type="button" class="btn btn-default" onclick="handleToolbarTool('select-area')"><i class="material-icons">photo_size_select_large</i></button> -->
+					<button type="button" class="btn btn-default" id="pencil" onclick="handleToolbarTool('pencil')"><i class="material-icons">brush</i></button>
+					<button type="button" class="btn btn-default glyphicon glyphicon-erase" id="ereaser" onclick="handleToolbarTool('ereaser')"><i class="fa fa-eraser"></i></button>
+				</div>
+				<div class="fluid patternGrid">
+						<canvas id="gridCanvas" ></canvas>
+				</div>
+
+				<div class="fixed settingsbar">
+					<div class="gridSettings">
+
+            <div class="card">
+              <div class="card-header">Ruudukko</div>
+              <div class="card-body">
+                <div class="row page-settings-input-row">
+                  <div class="col page-settings">
+                    <div class="colorPreview" tabindex="0" onclick="constructColorpalet()">
+                      <div class="select-color">
+                        <div class="colorpicker">
+        									<canvas id="picker" height="300" width="500"></canvas>
+        								</div>
+
+                        <div class="row page-settings-input-row">
+                          <div class="col page-settings">
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">HEX</span>
+                              </div>
+                              <input type="text" class="form-control" id="colorVal" value="#000000" autocomplete="off"/>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="colorpalet">
+                            <div class="row page-settings-input-row">
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col page-settings">
+                    <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">L</span>
+                      </div>
+                      <input type="text" id="gridWidthPreview" class="form-control" placeholder="100" disabled>
+                    </div>
+                  </div>
+                  <div class="col page-settings">
+                    <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">K</span>
+                      </div>
+                      <input type="text" id="gridHeightPreview" class="form-control" placeholder="100" disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col page-settings labels">
+                    <span class="settings-labels">Väri</span>
+                  </div>
+                  <div class="col page-settings labels">
+                    <span class="settings-labels">Leveys</span>
+                  </div>
+                  <div class="col page-settings labels">
+                    <span class="settings-labels">Korkeus</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--
+							<div class="card">
+							  <div class="card-header">Ikkuna asetukset</div>
+							  <div class="card-body">
+								<div class="input-group">
+								  <span class="input-group-addon">Leveys</span>
+								  <input type="text" id="gridWidth" class="form-control" value="100">
+								</div>
+								<div class="input-group">
+								  <span class="input-group-addon">Korkeus</span>
+								  <input type="text" id="gridHeight" class="form-control" value="100">
+								</div>
+								<div>
+									<button type="submit" class="btn btn-primary" onclick="drawGrid()">Hyväksy</button>
+								</div>
+							</div>
+						  </div>
+            -->
+
+					</div>
+				</div>
+			</div>
+
+    <!--  <div class="row-fluid bottom-bar">ss</div> -->
+
+		<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+			<div class="modal-dialog modal-lg" id="import-image">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Lisää kuva</h4>
+					</div>
+					<div class="modal-body">
+						<div class="" id="ImagepreviewPlaceholder">
+							<canvas id="patternPreview"></canvas>
+						</div>
+						<div class="">
+							<label for="addImage" class="btn btn-default btn-file glyphicon glyphicon-picture">
+								<i class="material-icons">attach_file</i>
+							</label>
+							<input type="file" id="addImage" accept="image/*" onchange="LoadImageFromLocalDisk()"/>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" onclick="handleImageImport()">Lisää</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <div class="modal fade" id="resizeCanvas" role="dialog" data-backdrop="static">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Ruudukon koko</h4>
+					</div>
+					<div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+
+                <div class="col page-settings">
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Leveys</span>
+                    </div>
+                    <input type="text" id="gridWidth" class="form-control" value="100">
+                  </div>
+                </div>
+                <div class="col page-settings">
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Korkeus</span>
+                    </div>
+                    <input type="text" id="gridHeight" class="form-control" value="100">
+                  </div>
+                </div>
+            </div>
+            </div>
+					</div>
+					<div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+						<button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="canvasResize()">Hyväksy</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+  </body>
+</html>

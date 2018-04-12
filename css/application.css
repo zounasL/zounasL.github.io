@@ -1,0 +1,174 @@
+html, body {
+    height: 100%;
+}
+
+#application {
+	height: 100%;
+}
+
+.container-fluid{
+	height:100%;
+	 padding: 0px !important;
+}
+
+.editor-row {
+  display: -webkit-flex;
+  display: flex;
+  height: calc(100% - 30px);
+}
+
+.fluid {
+  flex: 1;
+}
+
+nav {
+  background-color: #545255;
+	border-bottom: 1px solid #222;
+	height: 30px;
+}
+
+nav div ul li button{
+  color: white !important;
+}
+
+nav div ul li a{
+  color: white !important;
+}
+
+nav div ul li .dropdown-toggle::after {
+    display:none
+}
+
+nav div ul li .dropdown-menu {
+   background-color: #545255;
+}
+
+nav div ul li .dropdown-menu > button:hover {
+   background-color: #D7D7D7 !important;
+}
+
+.toolbar {
+	width: 60px;
+	float: left;
+	background-color: #545255;
+}
+
+.toolbar input {
+	width: 100%;
+}
+
+.toolbar .btn {
+	width: 100%;
+  background-color: #545255;
+}
+
+.toolbar .btn i {
+	color: white;
+}
+
+.settingsbar {
+	width: 240px;
+	float: left;
+	background-color: #545255;
+}
+
+.settingsbar input {
+	width: 100%;
+}
+
+.settingsbar .btn {
+	width: 100%;
+}
+
+.settingsbar .gridSettings .card .card-header {
+  background-color: #2E2E2E;
+  color: white;
+}
+
+.settingsbar .gridSettings .card .card-body {
+  background-color: #3A3A3A;
+  color: white;
+}
+
+.settingsbar .page-settings-input-row {
+  height: 35px;
+}
+
+.settingsbar .colorPreview {
+	width: 30px;
+	height: 30px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid white;
+  background-color: rgb(0,0,0);
+}
+
+.labels {
+  text-align: center;
+}
+
+.settings-labels {
+  font-family: "Times New Roman";
+}
+
+.patternGrid {
+	height: 100%;
+  float: left;
+  overflow: scroll;
+  position: relative;
+  /*box-shadow: 0px 0 5px 0px #2E2E2E;*/
+}
+
+.bottom-bar {
+	background-color: #545255;
+}
+
+.page-settings:not(:last-child) {
+  padding-left: 0 !important;
+  padding-right: 5px;
+}
+
+.page-settings:last-child {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#addImage {
+	display: none;
+}
+
+#import-image {
+	width: 1000px;
+}
+
+#ImagepreviewPlaceholder {
+	overflow: scroll;
+}
+
+.select-color {
+  display:none;
+  position: absolute;
+  width: 503px;
+  height: 400px;
+  top: -100px;
+  left: -300px;
+  background-color: #3A3A3A;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.select-color .row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.colorPreview:focus .select-color {
+  display:block;
+}
+
+.colorPreview .colorpalet {
+  padding-top: 15px;
+  border-top: 1px solid #2E2E2E;
+  width: 100%;
+}
