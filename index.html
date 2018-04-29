@@ -237,17 +237,18 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-5 mr-auto order-lg-2">
-            <div class="form-area">  
-				<form role="form" action="https://formspree.io/pixelart.application@gmail.com" method="POST">
-				<br style="clear:both">
+            <div class="form-area">
+				<form id="contactform" role="form" action="https://pixelartapplication.000webhostapp.com/pixelart-contact.php" method="POST">
+          <div class="messages"></div>
+        <br style="clear:both">
 							<h3 style="margin-bottom: 25px; text-align: center;">Lähetä meille palautetta</h3>
 							<div class="form-group">
-								<input type="text" class="form-control" id="email" name="email" placeholder="Sähköposti">
+								<input type="text" class="form-control" id="email" name="email" placeholder="Sähköposti" required>
 							</div>
 							<div class="form-group">
-							<textarea class="form-control" type="textarea" name="message" id="message" placeholder="Viesti" rows="7"></textarea>
+							<textarea class="form-control" type="textarea" name="message" id="message" placeholder="Viesti" rows="7" required></textarea>
 							</div>
-					
+
 				<button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Lähetä</button>
 				</form>
 			</div>
@@ -271,4 +272,38 @@
 <script>
 	document.getElementById("advanceSettings").checked = false;
 </script>
+
+<!-- Send mail -->
+<script>
+			$("#contactform").submit(function(event){
+				event.preventDefault(); //prevent default action
+				let post_url = $(this).attr("action"); //get form action url
+				let request_method = $(this).attr("method"); //get form GET/POST method
+
+        // Initiate Variables With Form Content
+         let email = $("#email").val();
+         let message = $("#message").val();
+
+         $.ajax({
+            type:request_method,
+            url:post_url,
+            data:"email=" + email + "&message=" + message,
+            success: function (response) {
+                if(response == "successs") {
+                  // let's compose Bootstrap alert box HTML
+                  let alertBox = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Viestin lähettäminen onnistui. Kiitos viestistäsi.</div>';
+
+        					// inject the alert to .messages div in our form
+        					$('#contactform').find('.messages').html(alertBox);
+                }else if(response == "invalid") {
+                  // let's compose Bootstrap alert box HTML
+                  let alertBox = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Pahoittelemme mutta viestin lähettäminen epäonnistui. Kokeile myöhemmin uudestaan. Voit myös laittaa meille suoraan viestiä sähköpostiimme <small>pixelart.application@gmail.com</small></div>';
+
+        					// inject the alert to .messages div in our form
+        					$('#contactform').find('.messages').html(alertBox);
+                }
+            }
+        });
+			});
+		</script>
 </html>
