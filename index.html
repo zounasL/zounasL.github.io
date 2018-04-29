@@ -275,22 +275,31 @@
 
 <!-- Send mail -->
 <script>
-	$("#contactform").submit(function(event){
-		event.preventDefault(); //prevent default action
-		let post_url = $(this).attr("action"); //get form action url
-		let request_method = $(this).attr("method"); //get form GET/POST method
+			$("#contactform").submit(function(event){
+				event.preventDefault(); //prevent default action
+				let post_url = $(this).attr("action"); //get form action url
+				let request_method = $(this).attr("method"); //get form GET/POST method
         // Initiate Variables With Form Content
          let email = $("#email").val();
          let message = $("#message").val();
          $.ajax({
             type:request_method,
             url:post_url,
-            data:"email=" + email + "&message=" + message
-        }).done(function(data) {
-		   let alertBox = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Viestin lähettäminen onnistui. Kiitos viestistäsi.</div>';
-			// inject the alert to .messages div in our form
-			$('#contactform').find('.messages').html(alertBox);
-		});
-	});
+            data:"email=" + email + "&message=" + message,
+            success: function (response) {
+                if(response == "successs") {
+                  // let's compose Bootstrap alert box HTML
+                  let alertBox = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Viestin lähettäminen onnistui. Kiitos viestistäsi.</div>';
+        					// inject the alert to .messages div in our form
+        					$('#contactform').find('.messages').html(alertBox);
+                }else if(response == "invalid") {
+                  // let's compose Bootstrap alert box HTML
+                  let alertBox = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Pahoittelemme mutta viestin lähettäminen epäonnistui. Kokeile myöhemmin uudestaan. Voit myös laittaa meille suoraan viestiä sähköpostiimme <small>pixelart.application@gmail.com</small></div>';
+        					// inject the alert to .messages div in our form
+        					$('#contactform').find('.messages').html(alertBox);
+                }
+            }
+        });
+			});
 		</script>
 </html>
