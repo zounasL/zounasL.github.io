@@ -287,6 +287,7 @@
          $.ajax({
             type:request_method,
             url:post_url,
+	    dataType: "jsonp",
             data:"email=" + email + "&message=" + message,
             success: function (response) {
                 if(response == "successs") {
