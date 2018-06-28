@@ -248,8 +248,12 @@ span {
 	text-align: center;
 }
 
+.content-section-sponsor {
+  background-color: #f8f8f8;
+}
+
 .sponsor {
-    padding: 80px 0px 20px 0px;
+    padding: 20px 0px 20px 0px;
 	text-align: center;
 }
 
