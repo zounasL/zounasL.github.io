@@ -102,6 +102,10 @@ footer {
   background-color: #f8f8f8;
 }
 
+footer hr {
+  width: 90%;
+}
+
 p.copyright {
   margin: 15px 0 0;
 }
