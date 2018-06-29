@@ -259,8 +259,8 @@
 		<div class="sponsor">
 				<h2>Sponsori</h2>
 				<div class="separator"></div>
-				<div class="row">
-				<a href="https://track.adtraction.com/t/t?a=1201500338&as=1249448235&t=2&tk=1"><img src="https://track.adtraction.com/t/t?a=1201500338&as=1249448235&t=1&tk=1&i=1" width="728" height="90" border="0"></a>
+				<div class="row" id="ads-sponsor" ad-size="normal">
+					<a href="https://track.adtraction.com/t/t?a=1201500361&as=1249448235&t=2&tk=1"><img src="https://track.adtraction.com/t/t?a=1201500361&as=1249448235&t=1&tk=1&i=1" width="980" height="120" border="0"></a>
 				</div>
 			</div>
 
@@ -309,4 +309,20 @@
         });
 			});
 		</script>
+	
+<script>
+window.onresize = function(event) {
+	if(document.body.clientWidth >= 980 & document.getElementById("ads-sponsor").getAttribute("ad-size") != "normal"){
+		document.getElementById("ads-sponsor").removeChild(document.getElementById("ads-sponsor").firstChild);
+		
+		document.getElementById("ads-sponsor").innerHTML += '<a href="https://track.adtraction.com/t/t?a=1201500361&as=1249448235&t=2&tk=1"><img src="https://track.adtraction.com/t/t?a=1201500361&as=1249448235&t=1&tk=1&i=1" width="980" height="120" border="0"></a>';
+		document.getElementById("ads-sponsor").setAttribute("ad-size", "normal");
+	}else if (document.body.clientWidth < 980 & document.getElementById("ads-sponsor").getAttribute("ad-size") != "small")) {
+		document.getElementById("ads-sponsor").removeChild(document.getElementById("ads-sponsor").firstChild);
+		
+		document.getElementById("ads-sponsor").innerHTML += '<a href="https://track.adtraction.com/t/t?a=1201500357&as=1249448235&t=2&tk=1"><img src="https://track.adtraction.com/t/t?a=1201500357&as=1249448235&t=1&tk=1&i=1" width="300" height="250" border="0"></a>';
+		document.getElementById("ads-sponsor").setAttribute("ad-size", "small");
+	}
+};
+</script>
 </html>
