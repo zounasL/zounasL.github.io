@@ -257,6 +257,11 @@ span {
 	text-align: center;
 }
 
+.sponsor .row a {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .separator {
     height: 1px;
     width: 70px;
